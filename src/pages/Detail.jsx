@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { getFormattedDate } from "util/date";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteLetter, editLetter } from "../redux/modules/letters";
+import Layout from "components/Layout";
 
 export default function Detail() {
   const dispatch = useDispatch();
@@ -34,45 +35,48 @@ export default function Detail() {
     setEditingText("");
   };
   return (
-    <Container>
-      <Link to="/">
-        <HomeBtn>
-          <Button text="홈으로" />
-        </HomeBtn>
-      </Link>
+    <>
+      <Layout />
+      <Container>
+        <Link to="/">
+          <HomeBtn>
+            <Button text="홈으로" />
+          </HomeBtn>
+        </Link>
 
-      <DetailWrapper>
-        <UserInfo>
-          <AvatarAndNickname>
-            <Avatar src={avatar} size="large" />
-            <Nickname>{nickname}</Nickname>
-          </AvatarAndNickname>
-          <time>{getFormattedDate(createdAt)}</time>
-        </UserInfo>
-        <ToMember>To: {writedTo}</ToMember>
-        {isEditing ? (
-          <>
-            <Textarea
-              autoFocus
-              defaultValue={content}
-              onChange={(event) => setEditingText(event.target.value)}
-            />
-            <BtnsWrapper>
-              <Button text="취소" onClick={() => setIsEditing(false)} />
-              <Button text="수정완료" onClick={onEditDone} />
-            </BtnsWrapper>
-          </>
-        ) : (
-          <>
-            <Content>{content}</Content>
-            <BtnsWrapper>
-              <Button text="수정" onClick={() => setIsEditing(true)} />
-              <Button text="삭제" onClick={onDeleteBtn} />
-            </BtnsWrapper>
-          </>
-        )}
-      </DetailWrapper>
-    </Container>
+        <DetailWrapper>
+          <UserInfo>
+            <AvatarAndNickname>
+              <Avatar src={avatar} size="large" />
+              <Nickname>{nickname}</Nickname>
+            </AvatarAndNickname>
+            <time>{getFormattedDate(createdAt)}</time>
+          </UserInfo>
+          <ToMember>To: {writedTo}</ToMember>
+          {isEditing ? (
+            <>
+              <Textarea
+                autoFocus
+                defaultValue={content}
+                onChange={(event) => setEditingText(event.target.value)}
+              />
+              <BtnsWrapper>
+                <Button text="취소" onClick={() => setIsEditing(false)} />
+                <Button text="수정완료" onClick={onEditDone} />
+              </BtnsWrapper>
+            </>
+          ) : (
+            <>
+              <Content>{content}</Content>
+              <BtnsWrapper>
+                <Button text="수정" onClick={() => setIsEditing(true)} />
+                <Button text="삭제" onClick={onDeleteBtn} />
+              </BtnsWrapper>
+            </>
+          )}
+        </DetailWrapper>
+      </Container>
+    </>
   );
 }
 

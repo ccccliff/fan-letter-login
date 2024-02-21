@@ -1,8 +1,8 @@
 import Detail from "pages/Detail";
 import Home from "pages/Home";
-import Login from "pages/login/Login";
-import Join from "pages/join/Join";
-import Profile from "pages/profile/Profile";
+import Login from "pages/Login";
+import Join from "pages/Join";
+import Profile from "pages/Profile";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useState } from "react";
 

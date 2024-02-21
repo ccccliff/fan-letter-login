@@ -5,12 +5,12 @@ import {
   StyledTitle,
   StyledInputs,
   StyledButtons,
-} from "../../components/common/StyledUi";
+} from "../components/common/StyledUi";
 import {
   StyledBtn,
   StyledInput,
   StyledP,
-} from "../../components/common/StyledElements";
+} from "../components/common/StyledElements";
 import { useNavigate } from "react-router";
 function Login() {
   const navigate = useNavigate();
