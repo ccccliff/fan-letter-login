@@ -4,7 +4,7 @@ export const StyledPage = styled.div`
   height: 100vh;
   background-color: white;
 `;
-export const StyledLoginUi = styled.div`
+export const StyledLoginUi = styled.form`
   width: 800px;
   height: 400px;
   margin: 150px auto 150px auto;
