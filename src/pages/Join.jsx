@@ -12,23 +12,32 @@ import {
   StyledP,
 } from "../components/common/StyledElements";
 import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
 function Join() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [formState, setFormState] = useState({
+  const initialState = {
     id: "",
     password: "",
     nickname: "",
-  });
+  };
+  const [formState, setFormState] = useState(initialState);
 
   const { id, password, nickname } = formState;
   const joinHandler = (event) => {
     const { name, value } = event.target;
     setFormState((prev) => ({ ...prev, [name]: value }));
   };
+  const onJoinSubmitHandler = (event) => {
+    event.preventDefault();
+    setFormState(initialState);
+    alert("회원가입성공");
+    navigate("/login");
+  };
 
   return (
     <StyledPage>
-      <StyledLoginUi>
+      <StyledLoginUi onSubmit={onJoinSubmitHandler}>
         <StyledTitle>회원가입</StyledTitle>
         <StyledInputs>
           <StyledInput

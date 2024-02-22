@@ -13,7 +13,7 @@ import {
 } from "../components/common/StyledElements";
 import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
-import { isLogin } from "../redux/modules/auth";
+import { login } from "../redux/modules/auth";
 
 function Login() {
   const dispatch = useDispatch();
@@ -27,14 +27,15 @@ function Login() {
     const { name, value } = event.target;
     setLoginFormState((prev) => ({ ...prev, [name]: value }));
   };
-  const onSubmitHandler = (event) => {
+  const onLoginSubmitHandler = (event) => {
     event.preventDefault();
-    dispatch(isLogin());
-    console.log("로그인성공");
+    dispatch(login());
+    alert("로그인성공");
+    navigate("/");
   };
   return (
     <StyledPage>
-      <StyledLoginUi onSubmit={onSubmitHandler}>
+      <StyledLoginUi onSubmit={onLoginSubmitHandler}>
         <StyledTitle>로그인</StyledTitle>
         <StyledInputs>
           <StyledInput
