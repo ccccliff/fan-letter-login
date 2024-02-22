@@ -1,11 +1,13 @@
+import { useNavigate } from "react-router";
 import styled from "styled-components";
 
 export default function Layout() {
+  const navigate = useNavigate();
   return (
     <StyledLayout>
-      <StyledpBtn>Home</StyledpBtn>
+      <StyledpBtn onClick={() => navigate("/")}>Home</StyledpBtn>
       <StyledUserImfo>
-        <StyledpBtn>내 프로필</StyledpBtn>
+        <StyledpBtn onClick={() => navigate("/profile")}>내 프로필</StyledpBtn>
         <StyledpBtn>로그아웃</StyledpBtn>
       </StyledUserImfo>
     </StyledLayout>

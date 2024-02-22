@@ -21,6 +21,7 @@ export const StyledInput = styled.input`
   border-bottom: 2px solid lightgray;
 `;
 export const StyledP = styled.p`
+  user-select: none;
   &:hover {
     cursor: pointer;
   }

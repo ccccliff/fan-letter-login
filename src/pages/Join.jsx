@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   StyledLoginUi,
   StyledPage,
@@ -12,16 +12,49 @@ import {
   StyledP,
 } from "../components/common/StyledElements";
 import { useNavigate } from "react-router";
-function Login() {
+function Join() {
   const navigate = useNavigate();
+  const [formState, setFormState] = useState({
+    id: "",
+    password: "",
+    nickname: "",
+  });
+
+  const { id, password, nickname } = formState;
+  const joinHandler = (event) => {
+    const { name, value } = event.target;
+    setFormState((prev) => ({ ...prev, [name]: value }));
+  };
+
   return (
     <StyledPage>
       <StyledLoginUi>
         <StyledTitle>회원가입</StyledTitle>
         <StyledInputs>
-          <StyledInput placeholder="아이디(4~10글자)"></StyledInput>
-          <StyledInput placeholder="비밀번호(4~15글자)"></StyledInput>
-          <StyledInput placeholder="닉네임(1~9글자)"></StyledInput>
+          <StyledInput
+            name="id"
+            value={id}
+            onChange={joinHandler}
+            placeholder="아이디(4~10글자)"
+            minLength={4}
+            maxLength={10}
+          ></StyledInput>
+          <StyledInput
+            name="password"
+            value={password}
+            onChange={joinHandler}
+            placeholder="비밀번호(4~15글자)"
+            minLength={4}
+            maxLength={15}
+          ></StyledInput>
+          <StyledInput
+            name="nickname"
+            value={nickname}
+            onChange={joinHandler}
+            placeholder="닉네임(1~9글자)"
+            minLength={1}
+            maxLength={9}
+          ></StyledInput>
         </StyledInputs>
         <StyledButtons>
           <StyledBtn>회원가입</StyledBtn>
@@ -32,4 +65,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Join;
