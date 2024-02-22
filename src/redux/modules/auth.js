@@ -8,14 +8,14 @@ const auth = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    isLogin: (state, action) => {
+    login: (state, action) => {
       state.isLogin = true;
     },
-    isLogout: (state, action) => {
+    logout: (state, action) => {
       state.isLogin = false;
     },
   },
 });
 
-export const { isLogin, isLogout } = auth.actions;
+export const { login, logout } = auth.actions;
 export default auth.reducer;
